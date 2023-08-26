@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>NSCalendarsUsageDescription</key>
-    <string>We need access to your calendar to add events.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Add Event</string>
 	<key>CFBundleExecutable</key>
@@ -49,5 +47,7 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+    <string>We need access to your calendar to add events.</string>
 </dict>
 </plist>
