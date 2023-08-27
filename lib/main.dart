@@ -54,48 +54,12 @@ class MyApp extends StatelessWidget {
       );
       final success = await Add2Calendar.addEvent2Cal(event);
       if (success) {
-        _dialogMessage(
-            context: context,
-            textMessage: "Event added to calendar successfully!",
-            onTap: () {
-              Navigator.of(context).pop();
-            });
+        debugPrint("Event added to calendar successfully!");
       } else {
-        _dialogMessage(
-            context: context,
-            textMessage: "Failed to add event to calendar.",
-            onTap: () {
-              Navigator.of(context).pop();
-            });
+        debugPrint("Failed to add event to calendar.");
       }
     } else {
-      _dialogMessage(
-          context: context,
-          textMessage: "Calendar permission denied.",
-          onTap: () {
-            openAppSettings();
-          });
+      debugPrint("Calendar permission denied.");
     }
-  }
-
-  Future<void> _dialogMessage(
-      {required BuildContext context,
-      required String textMessage,
-      required Function() onTap}) {
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text("Success"),
-          content: Text(textMessage),
-          actions: [
-            TextButton(
-              onPressed: onTap,
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
   }
 }
