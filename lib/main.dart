@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
         return AlertDialog(
           title: const Text("Success"),
           content: Text(textMessage),
-          actions: <Widget>[
+          actions: [
             TextButton(
               onPressed: onTap,
               child: const Text('OK'),
