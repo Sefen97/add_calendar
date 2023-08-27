@@ -26,7 +26,6 @@
     <true/>
     <key>NSCalendarsUsageDescription</key>
     <string>We need access to your calendar to add events.</string>
-    <true/>
     <key>UIMainStoryboardFile</key>
     <string>Main</string>
     <key>UILaunchStoryboardName</key>
