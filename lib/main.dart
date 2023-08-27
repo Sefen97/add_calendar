@@ -66,7 +66,8 @@ class MyApp extends StatelessWidget {
         debugPrint("Failed to add event to calendar.");
       }
     } else {
-      debugPrint("Calendar permission denied.");
+      await Permission.calendar.request();
+      // openAppSettings();
     }
   }
 }
