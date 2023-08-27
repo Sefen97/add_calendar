@@ -46,37 +46,15 @@ class MyApp extends StatelessWidget {
       final success = await Add2Calendar.addEvent2Cal(event);
 
       if (success) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Event added to calendar successfully!'),
-          ),
-        );
+        debugPrint("Event added to calendar successfully!");
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Failed to add event to calendar.'),
-          ),
-        );
+        debugPrint('Failed to add event to calendar.');
       }
     } else if (status.isPermanentlyDenied) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text(
-              'Calendar permission is permanently denied. Open app settings to grant permission.'),
-          action: SnackBarAction(
-            label: 'Open Settings',
-            onPressed: () {
-              openAppSettings(); // Open app settings when the user taps the action.
-            },
-          ),
-        ),
-      );
+      debugPrint(
+          "Calendar permission is permanently denied. Open app settings to grant permission.");
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Calendar permission denied.'),
-        ),
-      );
+      debugPrint("Calendar permission denied.");
     }
   }
 }
