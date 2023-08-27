@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
         debugPrint('Failed to add event to calendar.');
       }
     } else if (status.isPermanentlyDenied) {
-      openAppSettings();
+      debugPrint("Calendar permission denied.");
     } else {
       debugPrint("Calendar permission denied.");
     }
