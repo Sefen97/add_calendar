@@ -26,9 +26,6 @@
     <true/>
     <key>NSCalendarsUsageDescription</key>
     <string>We need access to your calendar to add events.</string>
-    <key>NSContactsUsageDescription</key>
-    <string>INSERT_REASON_HERE</string>
-    <key>UIApplicationSupportsIndirectInputEvents</key>
     <true/>
     <key>UIMainStoryboardFile</key>
     <string>Main</string>
