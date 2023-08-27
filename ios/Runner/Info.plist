@@ -10,12 +10,6 @@
     <string>INSERT_REASON_HERE</string>
     <key>NSCalendarsUsageDescription</key>
     <string>We need access to your calendar to add events.</string>
-    <key>CFBundleLocalizations</key>
-    	<array>
-    		<string>en</string>
-    		<string>es</string>
-    		<string>ja</string>
-    	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Add Event</string>
 	<key>CFBundleExecutable</key>
