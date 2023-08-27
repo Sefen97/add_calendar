@@ -11,63 +11,72 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Add event to calendar '),
-          ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Center(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: MaterialButton(
-                            color: Colors.blue,
-                            onPressed: () => _addEvent(context),
-                            child: const Text(
-                              "Add Event",
-                              style: TextStyle(color: Colors.white),
-                            )),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+        appBar: AppBar(
+          title: const Text('Add Event to Calendar'),
+        ),
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ElevatedButton(
+              onPressed: () => _addEvent(context),
+              child: const Text(
+                "Add Event",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 
-  void _addEvent(BuildContext context) async {
+  Future<void> _addEvent(BuildContext context) async {
     final status = await Permission.calendar.request();
+
     if (status.isGranted) {
       final event = Event(
-        title: 'This is  title ',
-        description: 'This is description ',
-        location: 'This is location',
-        startDate: DateTime.now().add(const Duration(minutes: 30)),
-        endDate: DateTime.now().add(const Duration(minutes: 90)),
+        title: 'Meeting with Client',
+        description: 'Discuss project details.',
+        location: '123 Main St, Anytown, USA',
+        startDate: DateTime.now().add(const Duration(hours: 1)),
+        endDate: DateTime.now().add(const Duration(hours: 2)),
         allDay: false,
-        // iosParams: const IOSParams(
-        //   reminder: Duration(),
-        //   url: 'https://www.example.com',
-        // ),
-        // androidParams: const AndroidParams(
-        //   emailInvites: [],
-        // ),
       );
+
       final success = await Add2Calendar.addEvent2Cal(event);
+
       if (success) {
-        debugPrint("Event added to calendar successfully!");
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Event added to calendar successfully!'),
+          ),
+        );
       } else {
-        debugPrint("Failed to add event to calendar.");
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Failed to add event to calendar.'),
+          ),
+        );
       }
+    } else if (status.isPermanentlyDenied) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text(
+              'Calendar permission is permanently denied. Open app settings to grant permission.'),
+          action: SnackBarAction(
+            label: 'Open Settings',
+            onPressed: () {
+              openAppSettings(); // Open app settings when the user taps the action.
+            },
+          ),
+        ),
+      );
     } else {
-      await Permission.calendar.request();
-      // openAppSettings();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Calendar permission denied.'),
+        ),
+      );
     }
   }
 }

@@ -47,8 +47,5 @@
     <true/>
     <key>NSCalendarsUsageDescription</key>
     <string>We need access to your calendar to manage events and appointments.</string>
-    <key>NSCalendarsUsageDescription</key>
-    <string>We need access to your calendar to manage events and appointments.</string>
-
 </dict>
 </plist>
