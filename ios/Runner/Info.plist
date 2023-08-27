@@ -4,6 +4,16 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+    <key>NSCalendarsUsageDescription</key>
+    <string>INSERT_REASON_HERE</string>
+    <key>NSContactsUsageDescription</key>
+    <string>INSERT_REASON_HERE</string>
+    <key>CFBundleLocalizations</key>
+    	<array>
+    		<string>en</string>
+    		<string>es</string>
+    		<string>ja</string>
+    	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Add Event</string>
 	<key>CFBundleExecutable</key>
@@ -47,7 +57,5 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
-	<key>NSCalendarsUsageDescription</key>
-    <string>INSERT_REASON_HERE</string>
 </dict>
 </plist>
