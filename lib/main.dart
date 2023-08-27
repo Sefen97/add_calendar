@@ -51,6 +51,13 @@ class MyApp extends StatelessWidget {
         startDate: DateTime.now().add(const Duration(minutes: 30)),
         endDate: DateTime.now().add(const Duration(minutes: 90)),
         allDay: false,
+        // iosParams: const IOSParams(
+        //   reminder: Duration(),
+        //   url: 'https://www.example.com',
+        // ),
+        // androidParams: const AndroidParams(
+        //   emailInvites: [],
+        // ),
       );
       final success = await Add2Calendar.addEvent2Cal(event);
       if (success) {
