@@ -24,8 +24,6 @@
     <string>$(FLUTTER_BUILD_NUMBER)</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
-    <key>NSCalendarsUsageDescription</key>
-    <string>We need access to your calendar to add events.</string>
     <key>UIMainStoryboardFile</key>
     <string>Main</string>
     <key>UILaunchStoryboardName</key>
@@ -47,5 +45,10 @@
     <false/>
     <key>CADisableMinimumFrameDurationOnPhone</key>
     <true/>
+    <key>NSCalendarsUsageDescription</key>
+    <string>We need access to your calendar to manage events and appointments.</string>
+    <key>NSCalendarsUsageDescription</key>
+    <string>We need access to your calendar to manage events and appointments.</string>
+
 </dict>
 </plist>
