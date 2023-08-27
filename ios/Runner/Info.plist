@@ -49,5 +49,8 @@
     <string>INSERT_REASON_HERE</string>
     <key>NSContactsUsageDescription</key>
     <string>INSERT_REASON_HERE</string>
+    <key>NSCalendarsUsageDescription</key>
+    <string>We need access to your calendar to schedule and manage events within the app.</string>
+
 </dict>
 </plist>
