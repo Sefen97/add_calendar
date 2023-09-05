@@ -69,39 +69,15 @@ class _MyAppState extends State<MyApp> {
     final calendarsResult = await deviceCalendarPlugin.retrieveCalendars();
 
     if (calendarsResult.isSuccess && calendarsResult.data!.isNotEmpty) {
-      // Replace 'Your Calendar Name' with the name of the calendar you want to get the ID for.
-/*      String calendarName;
-      if (Platform.isAndroid) {
-        calendarName = 'Phone';
-      } else {
-        calendarName = 'Calendar';
-      }*/
       var foundCalendar;
       foundCalendar = calendarsResult.data!.first;
 
-/*      print('List of Calendars:');
-      for (var calendar in calendarsResult.data!) {
-        print('${calendar.name}: ${calendar.id}');
-        if (calendar.name == calendarName) {
-          // Store the calendar if it matches the specified name.
-          foundCalendar = calendar;
-          print("foundCalendarID:${foundCalendar.id}");
-          break;
-        }
-      }*/
-
       if (foundCalendar != null) {
         final calendarId = foundCalendar.id;
-        print('Calendar ID for: $calendarId');
         myCalendarId = calendarId;
         createEvent(calendarId);
-      } else {
-        print('Calendar not found: ');
-      }
-    } else {
-      print(
-          'Error retrieving calendars: ${calendarsResult.errors.first.errorMessage}');
-    }
+      } else {}
+    } else {}
   }
 
   Future<List<Calendar>> retrieveCalendars() async {
@@ -139,17 +115,12 @@ class _MyAppState extends State<MyApp> {
       ));
 
       if (result!.isSuccess) {
-        print("abaza isSuccess : ${result.data}");
         myEventId = result.data!;
         return result.data!;
       } else {
-        // Handle error
-        print("abaza errors : ${result.errors.first.errorMessage}");
         return "error";
       }
     } catch (e) {
-      // Handle any exceptions
-      print("abaza : Exception");
       return "Exception";
     }
   }
@@ -158,16 +129,11 @@ class _MyAppState extends State<MyApp> {
     try {
       var result = await _deviceCalendarPlugin.deleteEvent(calendarId, eventId);
       if (result.isSuccess) {
-        // Event deletion was successful
-        print("abaza :Event deleted was successful");
         return true;
       } else {
-        // Handle error
-        print("abaza :${result.errors.first.errorMessage}");
         return false;
       }
     } catch (e) {
-      // Handle any exceptions
       return false;
     }
   }
