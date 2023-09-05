@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:device_calendar/device_calendar.dart';
@@ -46,8 +48,8 @@ class _MyAppState extends State<MyApp> {
                 const SizedBox(height: 40),
                 ElevatedButton(
                   onPressed: () {
-                    if(myCalendarId != null || myEventId != null){
-                      deleteCalendarEvent(myCalendarId,myEventId);
+                    if (myCalendarId != null || myEventId != null) {
+                      deleteCalendarEvent(myCalendarId, myEventId);
                     }
                   },
                   child: const Text(
@@ -69,10 +71,16 @@ class _MyAppState extends State<MyApp> {
 
     if (calendarsResult.isSuccess && calendarsResult.data!.isNotEmpty) {
       // Replace 'Your Calendar Name' with the name of the calendar you want to get the ID for.
-      const calendarName = 'Phone';
-
+/*      String calendarName;
+      if (Platform.isAndroid) {
+        calendarName = 'Phone';
+      } else {
+        calendarName = 'Calendar';
+      }*/
       var foundCalendar;
-      print('List of Calendars:');
+      foundCalendar = calendarsResult.data!.first;
+
+/*      print('List of Calendars:');
       for (var calendar in calendarsResult.data!) {
         print('${calendar.name}: ${calendar.id}');
         if (calendar.name == calendarName) {
@@ -81,15 +89,15 @@ class _MyAppState extends State<MyApp> {
           print("foundCalendarID:${foundCalendar.id}");
           break;
         }
-      }
+      }*/
 
       if (foundCalendar != null) {
         final calendarId = foundCalendar.id;
-        print('Calendar ID for $calendarName: $calendarId');
+        print('Calendar ID for: $calendarId');
         myCalendarId = calendarId;
         createEvent(calendarId);
       } else {
-        print('Calendar not found: $calendarName');
+        print('Calendar not found: ');
       }
     } else {
       print(
