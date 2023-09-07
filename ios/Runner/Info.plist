@@ -49,8 +49,5 @@
     <false/>
     <key>CADisableMinimumFrameDurationOnPhone</key>
     <true/>
-    <key>NSContactsUsageDescription</key>
-    <string>INSERT_REASON_HERE</string>
-
 </dict>
 </plist>
