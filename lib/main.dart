@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:device_calendar/device_calendar.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() => runApp(const MyApp());
 
@@ -65,19 +66,26 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> getCalendarId() async {
-    final DeviceCalendarPlugin deviceCalendarPlugin = DeviceCalendarPlugin();
-    final calendarsResult = await deviceCalendarPlugin.retrieveCalendars();
+    PermissionStatus status = await Permission.calendar.request();
+    if (status.isGranted) {
+      final DeviceCalendarPlugin deviceCalendarPlugin = DeviceCalendarPlugin();
+      final calendarsResult = await deviceCalendarPlugin.retrieveCalendars();
 
-    if (calendarsResult.isSuccess && calendarsResult.data!.isNotEmpty) {
-      var foundCalendar;
-      foundCalendar = calendarsResult.data!.first;
+      if (calendarsResult.isSuccess && calendarsResult.data!.isNotEmpty) {
+        var foundCalendar;
+        foundCalendar = calendarsResult.data!.first;
 
-      if (foundCalendar != null) {
-        final calendarId = foundCalendar.id;
-        myCalendarId = calendarId;
-        createEvent(calendarId);
+        if (foundCalendar != null) {
+          final calendarId = foundCalendar.id;
+          myCalendarId = calendarId;
+          createEvent(calendarId);
+        } else {}
       } else {}
-    } else {}
+    } else {
+      if (status.isPermanentlyDenied) {
+        openAppSettings();
+      } else {}
+    }
   }
 
   Future<List<Calendar>> retrieveCalendars() async {
